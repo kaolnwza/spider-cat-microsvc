@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo:
+    container_name: inventory-service
+    image: mongo
+    ports:
+      - '27016:27016'
+    volumes:
+      - './inventory-service-mock.js/docker-entrypoint-initdb.d/inventory-service-mock.js:ro'
+  mongo:
+    container_name: spider-service
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - './spider-service-mock.js/docker-entrypoint-initdb.d/spider-service-mock.js:ro'
+  mongo:
+    container_name: cat-service
+    image: mongo
+    ports:
+      - '27018:27018'
+    volumes:
+      - './cat-service-mock.js/docker-entrypoint-initdb.d/cat-service-mock.js:ro'
