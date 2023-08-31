@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "cat-service"
+		},
+		{
+			"path": "spider-service"
+		},
+		{
+			"path": "inventory-service"
+		},
+		{
+			"path": "docker"
+		},
+		{
+			"path": "script"
+		}
+	],
+	"settings": {}
+}
