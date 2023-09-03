@@ -1,23 +1,44 @@
 version: '3'
 services:
-  mongo:
-    container_name: inventory-service
-    image: mongo
-    ports:
-      - '27016:27016'
+  # inventory-mongo:
+  #   container_name: inventory-service
+  #   image: mongo
+  #   ports:
+  #     - '27016:27016'
+  #   volumes:
+  #     - './inventory-service-mock.js:/docker-entrypoint-initdb.d/inventory-service-mock.js:ro'
+  # spider-mongo:
+  #   container_name: spider-service
+  #   image: mongo
+  #   ports:
+  #     - '27017:27017'
+  #   volumes:
+  #     - './spider-service-mock.js:/docker-entrypoint-initdb.d/spider-service-mock.js:ro'
+  # cat-mongo:
+  #   container_name: cat-service
+  #   image: mongo
+  #   ports:
+  #     - '27018:27018'
+  #   volumes:
+  #     - './cat-service-mock.js:/docker-entrypoint-initdb.d/cat-service-mock.js:ro'
+
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
     volumes:
-      - './inventory-service-mock.js/docker-entrypoint-initdb.d/inventory-service-mock.js:ro'
-  mongo:
-    container_name: spider-service
-    image: mongo
+      - ./zookeeper:/data
+
+  kafka:
+    image: bitnami/kafka
+    container_name: kafka
     ports:
-      - '27017:27017'
+      - 9092:9092
     volumes:
-      - './spider-service-mock.js/docker-entrypoint-initdb.d/spider-service-mock.js:ro'
-  mongo:
-    container_name: cat-service
-    image: mongo
-    ports:
-      - '27018:27018'
-    volumes:
-      - './cat-service-mock.js/docker-entrypoint-initdb.d/cat-service-mock.js:ro'
+      - ./kafka:/bitnami/kafka/data
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+    depends_on:
+      - zookeeper

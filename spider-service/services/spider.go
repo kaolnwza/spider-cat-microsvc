@@ -13,7 +13,7 @@ type spiderSvc struct {
 type SpiderService interface {
 	GetSpidersService() ([]model.Spider, error)
 	GetSpiderByUUIDService(uuid uuid.UUID) (model.Spider, error)
-	AttackSpiderService(damage int) error
+	AttackSpiderService(spiderUUID uuid.UUID, damage int) error
 }
 
 func NewSpiderService(spiderRepo repository.SpiderRepository) spiderSvc {
@@ -33,6 +33,6 @@ func (s spiderSvc) GetSpiderByUUIDService(uuid uuid.UUID) (model.Spider, error) 
 	return model.Spider{}, nil
 }
 
-func (s spiderSvc) AttackSpiderService(damage int) error {
+func (s spiderSvc) AttackSpiderService(spiderUUID uuid.UUID, damage int) error {
 	return nil
 }

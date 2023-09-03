@@ -1,4 +1,4 @@
-db = db.getSiblingDB('inventory-service')
+db = db.getSiblingDB('inventory-service');
 
 db.Item.insertMany(
     {
@@ -11,7 +11,7 @@ db.Item.insertMany(
         "name": "ak47_bullet"
     },
     {
-         //healing = 47
+        //healing = 47
         "uuid": "2a7ff7a3-d828-4973-8c8e-63d6bb704dea",
         "name": "tango",
     },
@@ -31,7 +31,7 @@ db.Item.insertMany(
         "uuid": "c9e5c3d8-c1a4-47ca-b086-fa9767280158",
         "name": "cheat_engine",
     }
-)
+);
 
 db.Inventory.insertMany(
     {

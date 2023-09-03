@@ -1,4 +1,4 @@
-db = db.getSiblingDB('spider-service')
+db = db.getSiblingDB('spider-service');
 
 db.Spider.insertMany(
     {
@@ -32,7 +32,7 @@ db.Spider.insertMany(
         "uuid": "ab2a10ba-6ac0-4c14-96f2-f82db5b4dc0c",
         "name": "Spider King",
         "damage": 500,
-        "hp":500,
+        "hp": 500,
         "spider_amount": 1,
         "drop_item_uuid": "ff03cc95-462b-408c-a46d-9f97b07b74ab",
         "drop_item_amount": 1

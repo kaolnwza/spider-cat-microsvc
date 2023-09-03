@@ -10,7 +10,7 @@ type spiderRepo struct{}
 type SpiderRepository interface {
 	GetSpiders() ([]model.Spider, error)
 	GetSpiderByUUID(uuid uuid.UUID) (model.Spider, error)
-	AttackSpider(damage int) error
+	AttackSpider(spiderUUID uuid.UUID, damage int) error
 }
 
 func NewSpiderRepository() spiderRepo {
@@ -25,6 +25,6 @@ func (r spiderRepo) GetSpiderByUUID(uuid uuid.UUID) (model.Spider, error) {
 	return model.Spider{}, nil
 }
 
-func (r spiderRepo) AttackSpider(damage int) error {
+func (r spiderRepo) AttackSpider(spiderUUID uuid.UUID, damage int) error {
 	return nil
 }
