@@ -33,13 +33,13 @@ Start Kafka & Zookeep.
 
 Start Cat Service.
 
-    go run cat-service/cmd/main.go
+    cd cat-service/ && go run cmd/main.go
 
 <br/>
 
 Start Cat Service.
 
-    go run spider-service/cmd/main.go
+    cd spider-service/ && go run cmd/main.go
 
 <br/>
 
